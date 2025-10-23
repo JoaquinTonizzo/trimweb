@@ -12,6 +12,7 @@ const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { toast } = useToast();
+
   const [formData, setFormData] = useState({
     name: "",
     company: "",
@@ -19,23 +20,58 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: "¡Mensaje enviado!",
-      description: "Te contactaremos a la brevedad. ¡Gracias!",
-    });
-    setFormData({ name: "", company: "", email: "", message: "" });
-  };
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: "" }); // limpiar error al escribir
+  };
+
+  const validateForm = () => {
+    let newErrors = { name: "", email: "", message: "" };
+    let valid = true;
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Por favor, ingresá tu nombre.";
+      valid = false;
+    }
+    if (!formData.email.trim()) {
+      newErrors.email = "El email es obligatorio.";
+      valid = false;
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Ingresá un email válido.";
+      valid = false;
+    }
+    if (!formData.message.trim()) {
+      newErrors.message = "Contanos un poco sobre tu necesidad.";
+      valid = false;
+    }
+
+    setErrors(newErrors);
+    return valid;
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!validateForm()) return;
+
+    toast({
+      title: "¡Mensaje enviado!",
+      description: "Te contactaremos a la brevedad. ¡Gracias!",
+    });
+
+    setFormData({ name: "", company: "", email: "", message: "" });
   };
 
   return (
-    <section id="contacto" className="py-20 md:py-32 bg-background" ref={ref}>
+    <section id="contacto" className="py-12 md:py-20 bg-background" ref={ref}>
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -60,7 +96,8 @@ const Contact = () => {
             whileHover={{ scale: 1.02 }}
             className="bg-primary/5 dark:bg-primary/10 p-8 md:p-6 rounded-2xl shadow-xl border border-primary/20 transition-transform"
           >
-            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
+            <form onSubmit={handleSubmit} noValidate className="space-y-5">
+              {/* Nombre */}
               <div>
                 <label
                   htmlFor="name"
@@ -72,14 +109,25 @@ const Contact = () => {
                   id="name"
                   name="name"
                   type="text"
-                  required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full"
+                  className={`w-full ${
+                    errors.name ? "border-red-500 focus:ring-red-500" : ""
+                  }`}
                   placeholder="Tu nombre"
                 />
+                {errors.name && (
+                  <motion.p
+                    className="text-red-500 text-sm mt-1"
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                    {errors.name}
+                  </motion.p>
+                )}
               </div>
 
+              {/* Empresa */}
               <div>
                 <label
                   htmlFor="company"
@@ -98,6 +146,7 @@ const Contact = () => {
                 />
               </div>
 
+              {/* Email */}
               <div>
                 <label
                   htmlFor="email"
@@ -109,14 +158,25 @@ const Contact = () => {
                   id="email"
                   name="email"
                   type="email"
-                  required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full"
+                  className={`w-full ${
+                    errors.email ? "border-red-500 focus:ring-red-500" : ""
+                  }`}
                   placeholder="tu@email.com"
                 />
+                {errors.email && (
+                  <motion.p
+                    className="text-red-500 text-sm mt-1"
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                    {errors.email}
+                  </motion.p>
+                )}
               </div>
 
+              {/* Mensaje */}
               <div>
                 <label
                   htmlFor="message"
@@ -127,13 +187,23 @@ const Contact = () => {
                 <Textarea
                   id="message"
                   name="message"
-                  required
                   value={formData.message}
                   onChange={handleChange}
                   rows={3}
-                  className="w-full resize-none"
+                  className={`w-full resize-none ${
+                    errors.message ? "border-red-500 focus:ring-red-500" : ""
+                  }`}
                   placeholder="Contanos sobre tu necesidad..."
                 />
+                {errors.message && (
+                  <motion.p
+                    className="text-red-500 text-sm mt-1"
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                    {errors.message}
+                  </motion.p>
+                )}
               </div>
 
               <Button

@@ -8,15 +8,16 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Trima RH Brand Colors */
+    /* Trima RH Brand Colors (unificados para background/card/popover) */
     --background: 42 100% 96%; /* #FFF8E8 beige claro */
     --foreground: 0 0% 23%; /* #3B3B3B gris oscuro */
 
-    --card: 46 80% 94%; /* #FDF6E3 marfil */
-    --card-foreground: 0 0% 23%;
+    /* Unificar colores de fondo para toda la página */
+    --card: var(--background);
+    --card-foreground: var(--foreground);
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 23%;
+    --popover: var(--background);
+    --popover-foreground: var(--foreground);
 
     --primary: 30 89% 56%; /* #F28C28 naranja cálido */
     --primary-foreground: 0 0% 100%;
@@ -24,7 +25,7 @@ All colors MUST be HSL.
     --secondary: 28 100% 48%; /* #F47C00 naranja oscuro */
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 46 80% 94%;
+    --muted: var(--background);
     --muted-foreground: 0 0% 43%; /* #6E6E6E gris medio */
 
     --accent: 30 89% 56%;
@@ -47,6 +48,11 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Global control variables */
+    --root-font-size: 14px; /* reducir tamaño base de fuente */
+    --marquee-duration: 40; /* seconds for marquee - configurable */
+    --global-transition: 220ms;
   }
 
   .dark {
@@ -93,9 +99,20 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  /* make rem-based Tailwind sizes scale down by changing html font-size */
+  html {
+    font-size: var(--root-font-size);
+    overflow-x: hidden;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-family: 'Poppins', sans-serif;
+    /* force a slightly smaller base font across mobile and desktop */
+    font-size: var(--root-font-size);
+    line-height: 1.45;
+    transition: background-color var(--global-transition) ease, color var(--global-transition) ease;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {

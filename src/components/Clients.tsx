@@ -31,11 +31,22 @@ const Clients = () => {
   // Duplicate the list to create a seamless loop
   const looped = [...companies, ...companies];
 
-  // animation duration in seconds — adjust if you want faster/slower constant speed
-  const duration = 50;
+  // animation duration in seconds — read from a CSS variable so it's configurable in one place
+  const getMarqueeDuration = () => {
+    if (typeof window === "undefined") return 50;
+    try {
+      const raw = getComputedStyle(document.documentElement).getPropertyValue("--marquee-duration");
+      const n = parseFloat(raw);
+      return Number.isFinite(n) && n > 0 ? n : 50;
+    } catch (e) {
+      return 50;
+    }
+  };
+
+  const duration = getMarqueeDuration();
 
   return (
-    <section id="clientes" className="py-20 md:py-32 bg-card" ref={ref}>
+    <section id="clientes" className="py-12 md:py-20 bg-card" ref={ref}>
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -51,7 +62,7 @@ const Clients = () => {
           </p>
         </motion.div>
 
-        <div className="max-w-5xl mx-auto overflow-hidden">
+        <div className="max-w-full mx-auto overflow-hidden">
           <div
             className="w-full"
             onMouseEnter={() => setIsHovered(true)}
@@ -68,9 +79,9 @@ const Clients = () => {
               {looped.map((src, idx) => (
                 <div
                   key={idx}
-                  className="company-card inline-flex items-center justify-center min-w-[220px] md:min-w-[260px] lg:min-w-[320px] p-6 bg-white rounded-xl shadow-md border border-border mx-4"
+                  className="company-card inline-flex items-center justify-center min-w-[280px] md:min-w-[320px] lg:min-w-[360px] p-6 bg-white rounded-xl shadow-md border border-border mx-4"
                 >
-                  <img src={src} alt={`Empresa ${idx + 1}`} className="h-20 md:h-24 lg:h-28 object-contain" />
+                  <img src={src} alt={`Empresa ${idx + 1}`} className="h-24 md:h-28 lg:h-32 object-contain" />
                 </div>
               ))}
             </div>

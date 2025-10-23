@@ -9,13 +9,14 @@ const About = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="sobre-mi" className="py-20 md:py-32 bg-card" ref={ref}>
+    <section id="sobre-mi" className="py-12 md:py-20 bg-card" ref={ref}>
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
+            className="ml-4 md:ml-12"
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
