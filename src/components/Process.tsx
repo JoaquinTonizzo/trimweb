@@ -43,10 +43,10 @@ const Process = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-gray-900 dark:text-foreground">
+          <h2 className="text-2xl md:text-5xl font-bold mb-6 tracking-tight text-gray-900 dark:text-foreground">
             Nuestra <span className="text-primary">Metodología</span>
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 dark:text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base md:text-xl text-gray-600 dark:text-muted-foreground max-w-2xl mx-auto">
             Un proceso claro, ágil y humano para encontrar el talento ideal.
           </p>
         </motion.div>
@@ -72,10 +72,10 @@ const Process = () => {
                         className="flex flex-col gap-4 text-left p-4"
                       >
                         <Icon size={28} className="text-orange-500" />
-                        <h3 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-foreground">
+                        <h3 className="text-base md:text-2xl font-semibold text-gray-900 dark:text-foreground">
                           {step.title}
                         </h3>
-                        <p className="text-gray-600 dark:text-muted-foreground leading-relaxed max-w-xl">
+                        <p className="text-base md:text-lg text-gray-600 dark:text-muted-foreground leading-relaxed max-w-xl">
                           {step.description}
                         </p>
                       </motion.div>

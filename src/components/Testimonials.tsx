@@ -1,7 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Quote } from "lucide-react";
-import SpotlightCard from "./ui/SpotlightCard";
+import SpotlightCard from "./ui/spotlightcard";
 
 const testimonials = [
   {

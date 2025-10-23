@@ -1,7 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Users, ClipboardCheck, Target, Heart, Building2, Briefcase } from "lucide-react";
-import SpotlightCard from "./ui/SpotlightCard";
+import SpotlightCard from "./ui/spotlightcard";
 
 const services = [
   { icon: Users, title: "Reclutamiento y Selección", description: "Proceso end-to-end: entrevistas y coordinación completa para encontrar el candidato ideal." },
@@ -26,10 +26,10 @@ const Services = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-gray-900 dark:text-foreground">
+          <h2 className="text-2xl md:text-5xl font-bold mb-6 tracking-tight text-gray-900 dark:text-foreground">
             Nuestros <span className="text-primary">Servicios</span>
           </h2>
-          <p className="text-xs md:text-sm lg:text-base text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base md:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto">
             Soluciones integrales en recursos humanos adaptadas a tus necesidades
           </p>
         </motion.div>
@@ -53,10 +53,10 @@ const Services = () => {
                       <Icon className="text-primary w-5 h-5 md:w-6 md:h-6" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-sm md:text-base lg:text-lg font-semibold text-foreground mb-1 md:mb-3">
+                      <h3 className="text-base md:text-lg lg:text-xl font-semibold text-foreground mb-1 md:mb-3">
                         {service.title}
                       </h3>
-                      <p className="text-xs md:text-sm lg:text-base text-muted-foreground leading-relaxed">
+                      <p className="text-base md:text-base lg:text-lg text-muted-foreground leading-relaxed">
                         {service.description}
                       </p>
                     </div>

@@ -37,7 +37,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+            className="text-2xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
           >
             Tu camino hacia el talento comienza aquí
           </motion.h1>
@@ -46,7 +46,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-xl md:text-2xl text-white/90 mb-8 font-light"
+            className="text-base md:text-2xl text-white/90 mb-8 font-light"
           >
             Conectamos personas y organizaciones con propósito.
           </motion.p>
