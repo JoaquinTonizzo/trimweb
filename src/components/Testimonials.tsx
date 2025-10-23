@@ -56,7 +56,7 @@ const Testimonials = () => {
         </motion.div>
 
         {/* Testimonios */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
@@ -66,24 +66,24 @@ const Testimonials = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="relative"
             >
-              <SpotlightCard className="md:p-8 p-4 shadow-lg">
-                {/* Ícono (visible a la izquierda en mobile, en esquina en desktop) */}
+              <SpotlightCard className="p-6 md:p-8 shadow-md md:shadow-lg flex flex-col md:block">
+                {/* Ícono */}
                 <Quote
-                  className="text-primary/40 flex-shrink-0 md:absolute md:bottom-4 md:right-4"
+                  className="text-primary/40 mb-4 md:absolute md:bottom-4 md:right-4"
                   size={32}
                 />
 
                 {/* Texto + autor */}
-                <div className="flex-1 flex md:block items-start gap-4">
-                  <p className="text-muted-foreground italic leading-relaxed mb-2 md:mb-6 text-sm md:text-base">
+                <div className="flex-1 flex flex-col gap-4">
+                  <p className="text-muted-foreground italic leading-relaxed text-base md:text-sm">
                     “{testimonial.quote}”
                   </p>
 
                   <div className="border-t border-border pt-2 md:pt-4 w-full">
-                    <p className="font-semibold text-foreground text-sm md:text-base">
+                    <p className="font-semibold text-foreground text-base md:text-sm">
                       {testimonial.author}
                     </p>
-                    <p className="text-xs md:text-sm text-muted-foreground">
+                    <p className="text-sm md:text-xs text-muted-foreground">
                       {testimonial.position}
                     </p>
                   </div>
