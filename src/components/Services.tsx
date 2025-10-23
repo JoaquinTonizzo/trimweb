@@ -5,11 +5,11 @@ import SpotlightCard from "./ui/spotlightcard";
 
 const services = [
   { icon: Users, title: "Reclutamiento y Selección", description: "Proceso end-to-end: entrevistas y coordinación completa para encontrar el candidato ideal." },
-  { icon: ClipboardCheck, title: "Evaluación Psicotécnica", description: "Análisis profundo de aptitudes y personalidad para garantizar el mejor match cultural y profesional." },
+  { icon: ClipboardCheck, title: "Evaluación Psicotécnica", description: "Análisis de aptitudes y personalidad para garantizar el mejor match cultural y profesional." },
   { icon: Target, title: "Hunting", description: "Búsqueda directa y estratégica de perfiles de liderazgo y posiciones clave para tu organización." },
   { icon: Heart, title: "Coaching Vocacional y Ocupacional", description: "Guía personalizada para el autoconocimiento y la toma de decisiones profesionales acertadas." },
-  { icon: Building2, title: "Planes para PYMES", description: "Soluciones flexibles y adaptadas, reduciendo tiempos y costos de contratación para empresas en crecimiento." },
-  { icon: Briefcase, title: "Asesoramiento en RRHH", description: "Consultoría experta en gestión de talento, clima laboral y desarrollo organizacional para potenciar tu equipo." },
+  { icon: Building2, title: "Planes para PYMES", description: "Soluciones flexibles y adaptadas, reduciendo tiempos y costos para empresas en crecimiento." },
+  { icon: Briefcase, title: "Asesoramiento en RRHH", description: "Consultoría experta en gestión de talento, clima laboral y desarrollo organizacional." },
 ];
 
 const Services = () => {
