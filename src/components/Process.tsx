@@ -94,7 +94,7 @@ const Process = () => {
           >
             <Button
               onClick={openWhatsApp}
-              className="bg-primary hover:bg-secondary transition-all px-12 py-5 text-lg md:text-xl"
+              className="bg-primary hover:bg-secondary transition-all px-12 py-5 text-lg md:text-xl h-16"
             >
               Contactanos por WhatsApp
             </Button>
