@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import heroImage from "@/assets/hero-road.jpg";
+import logo from "@/assets/logo.png";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -27,44 +28,55 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center md:text-left">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-3xl mx-auto md:mx-0"
-        >
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-2xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
-          >
-            Tu camino hacia el talento comienza aquí
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-base md:text-2xl text-white/90 mb-8 font-light"
-          >
-            Conectamos personas y organizaciones con propósito.
-          </motion.p>
-
+        <div className="relative">
+          {/* Logo (solo desktop) */}
+          <motion.img
+            src={logo}
+            alt="Trima RH Logo"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.5 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            className="hidden md:block absolute right-4 lg:right-40 top-4 w-48 lg:w-60 object-contain"
+          />
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="max-w-3xl mx-auto md:mx-0"
           >
-            <Button
-              size="lg"
-              onClick={() => scrollToSection("servicios")}
-              className="bg-primary hover:bg-secondary text-white text-lg px-8 py-6 transition-all hover:scale-105 shadow-lg"
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-2xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
             >
-              Conocé nuestros servicios
-            </Button>
+              Tu camino hacia el talento comienza aquí
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="text-base md:text-2xl text-white/90 mb-8 font-light"
+            >
+              Conectamos personas y organizaciones con propósito.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              <Button
+                size="lg"
+                onClick={() => scrollToSection("servicios")}
+                className="bg-primary hover:bg-secondary text-white text-lg px-8 py-6 transition-all hover:scale-105 shadow-lg"
+              >
+                Conocé nuestros servicios
+              </Button>
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Scroll Indicator */}

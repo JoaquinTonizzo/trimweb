@@ -46,7 +46,7 @@ const Process = () => {
           <h2 className="text-2xl md:text-5xl font-bold mb-6 tracking-tight text-gray-900 dark:text-foreground">
             Nuestra <span className="text-primary">Metodología</span>
           </h2>
-          <p className="text-base md:text-xl text-gray-600 dark:text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base md:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto">
             Un proceso claro, ágil y humano para encontrar el talento ideal.
           </p>
         </motion.div>
