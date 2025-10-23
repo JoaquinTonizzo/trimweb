@@ -47,10 +47,10 @@ const Testimonials = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-2xl md:text-5xl font-bold mb-6 tracking-tight text-gray-900 dark:text-foreground">
             Lo que dicen nuestros clientes
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-base md:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto">
             Experiencias reales de quienes confían en Trima RH
           </p>
         </motion.div>

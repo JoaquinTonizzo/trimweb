@@ -79,10 +79,10 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-2xl md:text-5xl font-bold mb-6 tracking-tight text-gray-900 dark:text-foreground">
             ¿Buscás incorporar talento?
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base md:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto">
             ¿O querés saber más? ¡Hablemos!
           </p>
         </motion.div>

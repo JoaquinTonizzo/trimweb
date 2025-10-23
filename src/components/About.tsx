@@ -19,8 +19,8 @@ const About = () => {
             className="ml-4 md:ml-12"
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Sobre Mí
+            <h2 className="text-2xl md:text-5xl font-bold mb-6 tracking-tight text-gray-900 dark:text-foreground">
+              Sobre mí
             </h2>
             <p className="text-md text-muted-foreground mb-4 leading-relaxed">
               Soy <span className="font-semibold text-foreground">Elisabeth Triay</span>,
