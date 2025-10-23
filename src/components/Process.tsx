@@ -30,12 +30,13 @@ const Process = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const openWhatsApp = () => {
-    window.open("https://wa.me/5491123456789", "_blank"); // reemplaza con tu número
+    window.open("https://wa.me/5491123456789", "_blank"); // reemplazá con tu número real
   };
 
   return (
     <section id="proceso" className="py-20 md:py-32 bg-card" ref={ref}>
       <div className="container mx-auto px-4">
+        {/* Título */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -50,33 +51,35 @@ const Process = () => {
           </p>
         </motion.div>
 
+        {/* Pasos */}
         <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-12">
           {steps.map((step, index) => {
             const Icon = step.icon;
             return (
               <motion.div
-                key={step.title}
-                initial={{ opacity: 0, y: 50 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="flex flex-col items-center text-center relative"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.3 }}
+                className="flex items-start gap-4 md:flex-col md:items-center md:text-center text-left relative transition-transform duration-300"
               >
-                {/* Icono circular */}
-                <div className="relative w-24 h-24 bg-primary rounded-full flex items-center justify-center shadow-lg mb-6">
-                  <Icon className="text-white" size={40} />
-                  {/* Número superpuesto en esquina */}
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-secondary rounded-full flex items-center justify-center text-white font-bold text-sm">
+                {/* Ícono circular */}
+                <div className="relative flex-shrink-0 w-14 h-14 md:w-24 md:h-24 bg-primary rounded-full flex items-center justify-center shadow-lg md:mb-6">
+                  <Icon className="text-white" size={28} />
+                  {/* Número (solo desktop) */}
+                  <div className="hidden md:flex absolute -top-2 -right-2 w-8 h-8 bg-secondary rounded-full items-center justify-center text-white font-bold text-sm">
                     {index + 1}
                   </div>
                 </div>
 
                 {/* Contenido */}
-                <h3 className="text-2xl font-semibold text-foreground mb-4">
-                  {step.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {step.description}
-                </p>
+                <div>
+                  <h3 className="text-lg md:text-2xl font-semibold text-foreground mb-1 md:mb-4">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
               </motion.div>
             );
           })}
@@ -85,13 +88,13 @@ const Process = () => {
         {/* CTA */}
         <div className="mt-12 flex justify-center">
           <motion.div
-            whileHover={{ scale: 1.02 }}   // animación más sutil
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
-            transition={{ type: "spring", stiffness: 100, damping: 15 }} // más suave
+            transition={{ duration: 0.3 }}
           >
             <Button
               onClick={openWhatsApp}
-              className="bg-primary hover:bg-secondary transition-all px-16 py-6 text-lg md:text-xl"
+              className="bg-primary hover:bg-secondary transition-all px-12 py-5 text-lg md:text-xl"
             >
               Contactanos por WhatsApp
             </Button>

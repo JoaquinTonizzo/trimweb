@@ -32,10 +32,6 @@ const About = () => {
               extensamente con perfiles IT y PYMES, ayudando a empresas a encontrar el
               talento que necesitan para crecer.
             </p>
-            <p className="text-md text-muted-foreground mb-4 leading-relaxed">
-              Me aseguro de que cada proceso respete las expectativas y singularidades de cada
-              candidato, creando una experiencia agradable y de gran impacto.
-            </p>
             <p className="text-md text-muted-foreground mb-6 leading-relaxed">
               Creo firmemente que el éxito de cualquier organización radica en su gente,
               y mi misión es conectar a las personas correctas con las oportunidades correctas.

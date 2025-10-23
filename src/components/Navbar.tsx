@@ -32,12 +32,15 @@ const Navbar = () => {
     { label: "Contacto", id: "contacto" },
   ];
 
+  // Condición para saber si el navbar está "oscuro" (scrolled o mobile abierto)
+  const isDark = isScrolled || isMobileMenuOpen;
+
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+        isDark
           ? "bg-background/95 backdrop-blur-sm shadow-md"
           : "bg-transparent"
       }`}
@@ -52,7 +55,9 @@ const Navbar = () => {
             className="flex items-center gap-2"
           >
             <img src={logo} alt="Trima RH" className="h-8 w-auto" />
-            <span className="text-2xl font-bold text-primary">Trima RH</span>
+            <span className={`text-2xl font-bold ${isDark ? "text-muted-foreground" : "text-primary"}`}>
+              Trima RH
+            </span>
           </motion.div>
 
           {/* Desktop Menu */}
@@ -64,7 +69,9 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * index }}
                 onClick={() => scrollToSection(link.id)}
-                className={`${isScrolled ? 'text-muted-foreground' : 'text-white'} hover:text-primary transition-colors font-medium`}
+                className={`hover:text-primary transition-colors font-medium ${
+                  isDark ? "text-muted-foreground" : "text-white"
+                }`}
               >
                 {link.label}
               </motion.button>
@@ -87,7 +94,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-foreground"
+            className={`md:hidden ${isDark ? "text-muted-foreground" : "text-white"}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -106,7 +113,9 @@ const Navbar = () => {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className={`text-left ${isScrolled ? 'text-muted-foreground' : 'text-white'} hover:text-primary transition-colors font-medium py-2`}
+                className={`text-left hover:text-primary transition-colors font-medium py-2 ${
+                  isDark ? "text-muted-foreground" : "text-white"
+                }`}
               >
                 {link.label}
               </button>

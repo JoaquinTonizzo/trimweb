@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Users, ClipboardCheck, Target, Heart, Building2 } from "lucide-react";
+import { Users, ClipboardCheck, Target, Heart, Building2, Briefcase } from "lucide-react";
 import logo from "../assets/logo.png";
 
 const services = [
@@ -35,6 +35,12 @@ const services = [
     description:
       "Soluciones flexibles y adaptadas, reduciendo tiempos y costos de contratación para empresas en crecimiento.",
   },
+  {
+    icon: Briefcase,
+    title: "Asesoramiento en RRHH",
+    description:
+      "Consultoría experta en gestión de talento, clima laboral y desarrollo organizacional para potenciar tu equipo.",
+  },
 ];
 
 const Services = () => {
@@ -42,11 +48,7 @@ const Services = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section
-      id="servicios"
-      className="py-20 md:py-32 bg-background"
-      ref={ref}
-    >
+    <section id="servicios" className="py-20 md:py-32 bg-background" ref={ref}>
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -63,73 +65,43 @@ const Services = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center lg:justify-items-stretch">
-          {/* Primer grupo de 3 servicios */}
-          <div className="lg:col-span-3 grid lg:grid-cols-3 gap-8 w-full">
-            {services.slice(0, 3).map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <motion.div
-                  key={service.title}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-card p-8 rounded-2xl shadow-lg border border-border w-full max-w-sm lg:max-w-none relative"
-                >
-                  {/* Logo sutil en la esquina */}
-                  <img
-                    src={logo}
-                    alt="Logo"
-                    className="absolute top-4 right-4 w-12 h-12 opacity-20 pointer-events-none"
-                  />
+          {services.map((service, index) => {
+            const Icon = service.icon;
+            return (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 50 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="bg-card p-6 md:p-8 rounded-2xl shadow-lg border border-border w-full max-w-sm lg:max-w-none relative
+                           flex flex-col md:block" // mobile = flex, desktop = cards
+              >
+                {/* Logo sutil solo en desktop */}
+                <img
+                  src={logo}
+                  alt="Logo"
+                  className="hidden md:block absolute top-4 right-4 w-12 h-12 opacity-20 pointer-events-none"
+                />
 
-                  <div className="mb-6 w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
-                    <Icon className="text-primary" size={32} />
+                {/* Contenido: layout responsive */}
+                <div className="flex items-start gap-4 md:block">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 md:mb-6">
+                    <Icon className="text-primary" size={28} />
                   </div>
-                  <h3 className="text-2xl font-semibold text-foreground mb-4">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {service.description}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </div>
 
-          {/* Segundo grupo de servicios */}
-          <div className="lg:col-span-3 flex justify-center gap-8 flex-wrap">
-            {services.slice(3).map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <motion.div
-                  key={service.title}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.6, delay: (index + 3) * 0.1 }}
-                  className="bg-card p-8 rounded-2xl shadow-lg border border-border w-full max-w-sm relative"
-                >
-                  {/* Logo sutil en la esquina */}
-                  <img
-                    src={logo}
-                    alt="Logo"
-                    className="absolute top-4 right-4 w-12 h-12 opacity-20 pointer-events-none"
-                  />
-
-                  <div className="mb-6 w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
-                    <Icon className="text-primary" size={32} />
+                  <div className="flex-1">
+                    <h3 className="text-lg md:text-2xl font-semibold text-foreground mb-1 md:mb-4">
+                      {service.title}
+                    </h3>
+                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                      {service.description}
+                    </p>
                   </div>
-                  <h3 className="text-2xl font-semibold text-foreground mb-4">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {service.description}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

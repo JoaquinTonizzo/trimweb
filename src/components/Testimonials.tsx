@@ -40,6 +40,7 @@ const Testimonials = () => {
   return (
     <section id="testimonios" className="py-20 md:py-32 bg-background" ref={ref}>
       <div className="container mx-auto px-4">
+        {/* Título */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -53,6 +54,8 @@ const Testimonials = () => {
             Experiencias reales de quienes confían en Trima RH
           </p>
         </motion.div>
+
+        {/* Testimonios */}
         <div className="grid md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
             <motion.div
@@ -61,27 +64,29 @@ const Testimonials = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-card p-8 rounded-2xl shadow-lg border border-border relative"
+              className="bg-card md:p-8 p-4 rounded-2xl shadow-lg border border-border relative
+                         flex md:block items-start gap-4"
             >
-              {/* Quote text */}
-              <p className="text-muted-foreground mb-6 italic leading-relaxed relative z-10">
-                "{testimonial.quote}"
-              </p>
-
-              {/* Quote icon bottom-right */}
+              {/* Ícono (visible a la izquierda en mobile, en esquina en desktop) */}
               <Quote
-                className="absolute bottom-4 right-4 text-primary/20"
-                size={48}
+                className="text-primary/40 flex-shrink-0 md:absolute md:bottom-4 md:right-4"
+                size={32}
               />
 
-              {/* Author */}
-              <div className="border-t border-border pt-4">
-                <p className="font-semibold text-foreground">
-                  {testimonial.author}
+              {/* Texto + autor */}
+              <div className="flex-1">
+                <p className="text-muted-foreground italic leading-relaxed mb-2 md:mb-6 text-sm md:text-base">
+                  “{testimonial.quote}”
                 </p>
-                <p className="text-sm text-muted-foreground">
-                  {testimonial.position}
-                </p>
+
+                <div className="border-t border-border pt-2 md:pt-4">
+                  <p className="font-semibold text-foreground text-sm md:text-base">
+                    {testimonial.author}
+                  </p>
+                  <p className="text-xs md:text-sm text-muted-foreground">
+                    {testimonial.position}
+                  </p>
+                </div>
               </div>
             </motion.div>
           ))}
