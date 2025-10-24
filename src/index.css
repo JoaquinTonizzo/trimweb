@@ -204,6 +204,22 @@ All colors MUST be HSL.
     box-shadow: 0 0 10px rgba(242, 140, 40, 0.12) !important;
   }
 
+  /* trailing dots (small, subtle) */
+  .custom-cursor .cursor-trail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate3d(-9999px, -9999px, 0);
+    background: hsl(var(--primary)) !important;
+    border-radius: 9999px !important;
+    pointer-events: none !important;
+    will-change: transform, opacity !important;
+    transition: transform 120ms linear, opacity 160ms linear !important;
+    opacity: 0.6 !important;
+    filter: blur(0.5px) !important;
+    box-shadow: none !important;
+  }
+
   /* Minimal style change when hovering interactive elements (links/buttons):
      - Slightly larger
      - Use secondary color
@@ -217,7 +233,7 @@ All colors MUST be HSL.
     transition: transform 120ms ease, width 120ms ease, height 120ms ease, background-color 120ms ease !important;
   }
 
-  /* slightly smaller / dimmer for trailing dots */
+  /* fallback for any extra dots that might inherit cursor-dot (not used) */
   .custom-cursor .cursor-dot:nth-child(n + 2) {
     background: hsl(var(--primary)) !important;
     box-shadow: none !important;
