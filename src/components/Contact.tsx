@@ -111,9 +111,8 @@ const Contact = () => {
                   type="text"
                   value={formData.name}
                   onChange={handleChange}
-                  className={`w-full ${
-                    errors.name ? "border-red-500 focus:ring-red-500" : ""
-                  }`}
+                  className={`w-full ${errors.name ? "border-red-500 focus:ring-red-500" : ""
+                    }`}
                   placeholder="Tu nombre"
                 />
                 {errors.name && (
@@ -160,9 +159,8 @@ const Contact = () => {
                   type="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`w-full ${
-                    errors.email ? "border-red-500 focus:ring-red-500" : ""
-                  }`}
+                  className={`w-full ${errors.email ? "border-red-500 focus:ring-red-500" : ""
+                    }`}
                   placeholder="tu@email.com"
                 />
                 {errors.email && (
@@ -190,9 +188,8 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   rows={3}
-                  className={`w-full resize-none ${
-                    errors.message ? "border-red-500 focus:ring-red-500" : ""
-                  }`}
+                  className={`w-full resize-none ${errors.message ? "border-red-500 focus:ring-red-500" : ""
+                    }`}
                   placeholder="Contanos sobre tu necesidad..."
                 />
                 {errors.message && (
@@ -221,7 +218,7 @@ const Contact = () => {
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="space-y-8"
+            className="space-y-8 ml-2 sm:ml-0"
           >
             <div>
               <h3 className="text-2xl font-semibold text-foreground mb-6">

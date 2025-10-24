@@ -15,7 +15,7 @@ interface StepperProps extends HTMLAttributes<HTMLDivElement> {
 export default function Stepper({
   children,
   initialStep = 1,
-  onStepChange = () => {},
+  onStepChange = () => { },
   backButtonText = 'Volver',
   nextButtonText = 'Siguiente',
   disableStepIndicators = false,
@@ -48,7 +48,7 @@ export default function Stepper({
 
   return (
     <div
-      className="flex flex-col items-center justify-center w-full max-w-2xl mx-auto p-6 rounded-3xl bg-card border border-border shadow-lg"
+      className="flex flex-col items-center justify-center w-full max-w-5xl md:max-w-6xl mx-auto p-6 rounded-3xl bg-card border border-border shadow-lg"
       {...rest}
     >
       {/* Step Indicators */}
@@ -71,8 +71,8 @@ export default function Stepper({
                   ${isActive
                     ? 'bg-orange-500 text-white shadow-md'
                     : isComplete
-                    ? 'bg-orange-100 text-orange-500'
-                    : 'bg-gray-200 text-gray-500'
+                      ? 'bg-orange-100 text-orange-500'
+                      : 'bg-gray-200 text-gray-500'
                   }`}
                 whileHover={{ scale: disableStepIndicators ? 1 : 1.1 }}
                 whileTap={{ scale: 0.95 }}
