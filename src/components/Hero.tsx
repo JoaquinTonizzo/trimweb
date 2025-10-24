@@ -34,8 +34,9 @@ const Hero = () => {
             src={logo}
             alt="Trima RH Logo"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.5 }}
-            transition={{ duration: 0.8, delay: 1 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5}}
+            whileHover={{ scale: 1.05 }}
             className="hidden md:block absolute right-4 lg:right-40 top-4 w-48 lg:w-60 object-contain"
           />
           <motion.div
