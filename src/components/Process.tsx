@@ -15,7 +15,7 @@ const stepsData = [
     icon: Search,
     title: "Buscamos el mejor talento",
     description:
-      "Realizamos un proceso de búsqueda y selección personalizado, priorizando la afinidad cultural y el potencial.",
+      "Realizamos un proceso de búsqueda y selección personalizado, priorizando la afinidad cultural y profesional.",
   },
   {
     icon: CheckCircle,
