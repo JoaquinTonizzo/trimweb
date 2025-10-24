@@ -118,6 +118,116 @@ All colors MUST be HSL.
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold tracking-tight;
   }
+
+  /* Global custom scrollbar - applies across browsers
+     - No buttons/arrows
+     - Rectangular (no border-radius)
+     - Colors from CSS variables
+     - Uses !important on properties to override other rules
+     - WebKit (Chrome, Edge, Safari) + Firefox support
+  */
+
+  /* Hide scrollbars visually but keep scrolling functional
+     - Firefox: scrollbar-width: none
+     - IE/Edge legacy: -ms-overflow-style: none
+     - WebKit: set scrollbar size to 0 and make track/thumb transparent
+     This keeps scroll via wheel/trackpad/touch but hides the UI chrome.
+  */
+  * {
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE 10+ */
+  }
+
+  /* WebKit-based browsers (Chrome, Edge, Safari) */
+  *::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent !important;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: transparent !important;
+  }
+
+  /* Remove scrollbar buttons (arrows) */
+  *::-webkit-scrollbar-button {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  /* Corner (where two scrollbars might meet) */
+  *::-webkit-scrollbar-corner {
+    background: transparent !important;
+  }
+
+  /* Custom cursor: hide native cursor (except on form controls) and show an orange dot + subtle trail.
+     - Cursor hidden globally via cursor: none !important;
+     - Inputs, buttons and other interactive controls keep default cursor for accessibility.
+     - The visible cursor is rendered by the React component `CustomCursor`.
+  */
+
+  /* Hide native cursor globally but allow standard cursor for text inputs and editable areas only.
+     Buttons/links will NOT show the native cursor — we show a custom dot and change its style when hovering those.
+  */
+  html, body, *:not(input):not(textarea):not(select):not([contenteditable]) {
+    cursor: none !important;
+  }
+
+  /* Keep native cursor for text inputs and contenteditable areas for accessibility */
+  input, textarea, select, [contenteditable] {
+    cursor: auto !important;
+  }
+
+  .custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  .custom-cursor .cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate3d(-9999px, -9999px, 0);
+    background: hsl(var(--primary)) !important;
+    border-radius: 9999px !important;
+    pointer-events: none !important;
+    will-change: transform, opacity !important;
+    transition: background-color 120ms linear !important;
+    box-shadow: 0 0 10px rgba(242, 140, 40, 0.12) !important;
+  }
+
+  /* Minimal style change when hovering interactive elements (links/buttons):
+     - Slightly larger
+     - Use secondary color
+     - Add a thin subtle ring
+  */
+  .custom-cursor .cursor-dot.cursor-dot--active {
+    background: hsl(var(--secondary)) !important;
+    width: 16px !important;
+    height: 16px !important;
+    box-shadow: 0 0 0 4px rgba(244, 124, 0, 0.06) !important;
+    transition: transform 120ms ease, width 120ms ease, height 120ms ease, background-color 120ms ease !important;
+  }
+
+  /* slightly smaller / dimmer for trailing dots */
+  .custom-cursor .cursor-dot:nth-child(n + 2) {
+    background: hsl(var(--primary)) !important;
+    box-shadow: none !important;
+    mix-blend-mode: normal !important;
+  }
+
+  /* On interactive hover we could change color — keep behavior subtle */
+  .custom-cursor .cursor-dot:hover {
+    background: hsl(var(--secondary)) !important;
+  }
 }
 
 @layer utilities {
