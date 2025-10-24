@@ -16,7 +16,7 @@ const Footer = () => {
         {/* Grid principal */}
         <div className="grid gap-10 md:grid-cols-3 mb-10">
           {/* Brand */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+          <div className="flex flex-col items-start text-left md:items-start md:text-left">
             <img src={logo} alt="Trima RH Logo" className="w-20 mb-4" />
             <h3 className="text-2xl font-bold mb-2">Trima RH</h3>
             <p className="text-white/80 max-w-xs">
@@ -25,7 +25,7 @@ const Footer = () => {
           </div>
 
           {/* Enlaces Rápidos */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+          <div className="flex flex-col items-start text-left md:items-start md:text-left">
             <h4 className="text-lg font-semibold mb-4">Enlaces rápidos</h4>
             <ul className="space-y-2">
               {[
@@ -46,7 +46,7 @@ const Footer = () => {
           </div>
 
           {/* Redes Sociales */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+          <div className="flex flex-col items-start text-left md:items-start md:text-left">
             <h4 className="text-lg font-semibold mb-4">Seguinos</h4>
             <div className="flex gap-4">
               <a
@@ -75,13 +75,13 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="border-t border-white/20 pt-6 text-sm text-white/60 flex flex-col md:flex-row items-center justify-between gap-y-4">
+        {/* Copyright y créditos */}
+        <div className="border-t border-white/20 pt-6 text-sm text-white/60 flex flex-col md:flex-row items-center justify-center md:justify-between gap-y-4">
           <p className="text-center md:text-left">
             © {new Date().getFullYear()} Trima RH – Todos los derechos reservados.
           </p>
 
-          <p className="flex items-center gap-x-2 justify-center md:justify-end md:mr-20">
+          <p className="flex items-center gap-x-2 justify-center md:justify-end md:mr-20 text-center">
             <span>Desarrollado por</span>
             <a
               href="https://www.novarasoft.com"

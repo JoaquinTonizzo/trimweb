@@ -2,6 +2,14 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Quote } from "lucide-react";
 import SpotlightCard from "./ui/spotlightcard";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "./ui/carousel";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const testimonials = [
   {
@@ -16,7 +24,7 @@ const testimonials = [
   {
     quote: (
       <>
-        Gracias a Elisabeth, incorporamos al profesional que necesitábamos en tiempo récord, con un proceso ágil y totalmente transparente.
+        Nos ayudaron a incorporar al profesional que necesitábamos en tiempo récord, con un proceso ágil y transparente.
       </>
     ),
     author: "Carlos Rodríguez",
@@ -36,6 +44,7 @@ const testimonials = [
 const Testimonials = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isMobile = useIsMobile();
 
   return (
     <section id="testimonios" className="py-12 md:py-20 bg-background" ref={ref}>
@@ -56,42 +65,91 @@ const Testimonials = () => {
         </motion.div>
 
         {/* Testimonios */}
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              whileHover={{ scale: 1.05, zIndex: 10 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative"
-            >
-              <SpotlightCard className="p-6 md:p-8 shadow-md md:shadow-lg flex flex-col md:block">
-                {/* Ícono */}
-                <Quote
-                  className="text-primary/40 mb-4 md:absolute md:bottom-4 md:right-4"
-                  size={32}
-                />
+        {isMobile ? (
+          <Carousel
+            opts={{
+              loop: true,
+              align: "center",
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-2">
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index} className="pl-2 basis-[85%]">
+                  <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="relative"
+                  >
+                    <SpotlightCard className="p-6 shadow-md flex flex-col">
+                      {/* Ícono */}
+                      <Quote
+                        className="text-primary/40 mb-4"
+                        size={32}
+                      />
 
-                {/* Texto + autor */}
-                <div className="flex-1 flex flex-col gap-4">
-                  <p className="text-muted-foreground italic leading-relaxed text-base md:text-sm">
-                    “{testimonial.quote}”
-                  </p>
+                      {/* Texto + autor */}
+                      <div className="flex-1 flex flex-col gap-4">
+                        <p className="text-muted-foreground italic leading-relaxed text-base">
+                          "{testimonial.quote}"
+                        </p>
 
-                  <div className="border-t border-border pt-2 md:pt-4 w-full">
-                    <p className="font-semibold text-foreground text-base md:text-sm">
-                      {testimonial.author}
+                        <div className="border-t border-border pt-2 w-full">
+                          <p className="font-semibold text-foreground text-base">
+                            {testimonial.author}
+                          </p>
+                          <p className="text-sm text-muted-foreground">
+                            {testimonial.position}
+                          </p>
+                        </div>
+                      </div>
+                    </SpotlightCard>
+                  </motion.div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden" />
+            <CarouselNext className="hidden" />
+          </Carousel>
+        ) : (
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                whileHover={{ scale: 1.05, zIndex: 10 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="relative"
+              >
+                <SpotlightCard className="p-6 md:p-8 shadow-md md:shadow-lg flex flex-col md:block">
+                  {/* Ícono */}
+                  <Quote
+                    className="text-primary/40 mb-4 md:absolute md:bottom-4 md:right-4"
+                    size={32}
+                  />
+
+                  {/* Texto + autor */}
+                  <div className="flex-1 flex flex-col gap-4">
+                    <p className="text-muted-foreground italic leading-relaxed text-base md:text-sm">
+                      "{testimonial.quote}"
                     </p>
-                    <p className="text-sm md:text-xs text-muted-foreground">
-                      {testimonial.position}
-                    </p>
+
+                    <div className="border-t border-border pt-2 md:pt-4 w-full">
+                      <p className="font-semibold text-foreground text-base md:text-sm">
+                        {testimonial.author}
+                      </p>
+                      <p className="text-sm md:text-xs text-muted-foreground">
+                        {testimonial.position}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </SpotlightCard>
-            </motion.div>
-          ))}
-        </div>
+                </SpotlightCard>
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
