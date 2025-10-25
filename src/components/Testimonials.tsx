@@ -82,7 +82,7 @@ const Testimonials = () => {
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     className="relative"
                   >
-                    <SpotlightCard className="p-6 shadow-md flex flex-col">
+                    <SpotlightCard className="p-6 shadow-md flex flex-col h-[220px] md:h-[220px] mb-6 md:mb-0">
                       {/* Ícono */}
                       <Quote
                         className="text-primary/40 mb-4"
@@ -123,7 +123,7 @@ const Testimonials = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="relative"
               >
-                <SpotlightCard className="p-6 md:p-8 shadow-md md:shadow-lg flex flex-col md:block">
+                <SpotlightCard className="p-6 md:p-8 shadow-md md:shadow-lg flex flex-col md:block h-[220px] md:h-[220px] mb-6 md:mb-0">
                   {/* Ícono */}
                   <Quote
                     className="text-primary/40 mb-4 md:absolute md:bottom-4 md:right-4"
