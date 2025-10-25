@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Quote } from "lucide-react";
 import elisabethProfile from "@/assets/elisabeth-profile.jpg";
+import SpotlightCard from "./ui/spotlightcard";
 
 const About = () => {
   const ref = useRef(null);
@@ -37,11 +38,9 @@ const About = () => {
               Creo firmemente que el éxito de cualquier organización radica en su gente,
               y mi misión es conectar a las personas correctas con las oportunidades correctas.
             </p>
-            <motion.div
-              className="relative bg-primary/10 p-6 rounded-lg border-l-4 border-primary flex items-start"
-              style={{ maxWidth: "600px" }}
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 200, damping: 10 }}
+
+            <SpotlightCard
+              className="relative bg-primary/10 p-6 rounded-lg border-l-4 border-primary flex items-start max-w-[600px]"
             >
               <p className="text-md font-medium text-foreground italic">
                 "En Trima RH, nuestro objetivo es ayudar a las empresas tecnológicas a encontrar y retener el mejor talento."
@@ -49,7 +48,7 @@ const About = () => {
               <div className="flex-shrink-0 mr-4">
                 <Quote className="text-primary/20" size={48} />
               </div>
-            </motion.div>
+            </SpotlightCard>
           </motion.div>
 
           {/* Image */}
@@ -57,7 +56,6 @@ const About = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             className="flex justify-center"
-            whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <div className="relative">

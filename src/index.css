@@ -244,6 +244,28 @@ All colors MUST be HSL.
   .custom-cursor .cursor-dot:hover {
     background: hsl(var(--secondary)) !important;
   }
+
+  /* Footer-only cursor theme: make cursor and trail white when inside footer
+     We toggle this by adding the `cursor-white-footer` class on <html> (documentElement)
+     when the mouse enters the footer. This keeps the global cursor component
+     but overrides its color only while hovering the footer. */
+  .cursor-white-footer .custom-cursor .cursor-dot,
+  .cursor-white-footer .custom-cursor .cursor-trail {
+    background: hsl(0 0% 100%) !important; /* pure white */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.12) !important;
+  }
+
+  .cursor-white-footer .custom-cursor .cursor-dot.cursor-dot--active {
+    background: hsl(0 0% 100%) !important;
+    width: 16px !important;
+    height: 16px !important;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.06) !important;
+  }
+
+  /* prevent hover rule from switching back to secondary inside footer */
+  .cursor-white-footer .custom-cursor .cursor-dot:hover {
+    background: hsl(0 0% 100%) !important;
+  }
 }
 
 @layer utilities {

@@ -117,12 +117,26 @@ export default function Stepper({
         ) : (
           <div />
         )}
-        {!isLastStep && (
+
+        {/* Botón condicional para el último step */}
+        {!isLastStep ? (
           <Button
             onClick={handleNext}
-            className="min-w-[120px] bg-orange-500 text-white hover:bg-orange-600"
+            className="min-w-[120px] bg-primary text-white hover:bg-secondary"
           >
             {nextButtonText}
+          </Button>
+        ) : (
+          <Button
+            onClick={() => {
+              const target = document.querySelector('#contacto');
+              if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="min-w-[120px] bg-primary text-white hover:bg-secondary"
+          >
+            Contactanos
           </Button>
         )}
       </div>

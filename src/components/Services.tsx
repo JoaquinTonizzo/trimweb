@@ -47,7 +47,7 @@ const Services = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="w-full sm:w-1/2 lg:w-1/3 px-2 mb-4 relative" // <-- relative aquí
               >
-                <SpotlightCard className="p-4">
+                <SpotlightCard className="p-4 border border-border">
                   <div className="flex items-start gap-2 md:block relative">
                     <div className="w-8 h-8 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 md:mb-4">
                       <Icon className="text-primary w-5 h-5 md:w-6 md:h-6" />

@@ -17,16 +17,16 @@ const stepsData = [
       "Realizamos un proceso de búsqueda y selección personalizado, priorizando la afinidad cultural y profesional.",
   },
   {
-    icon: CheckCircle,
-    title: "Acompañamos la integración",
-    description:
-      "Brindamos seguimiento post-selección para asegurar una incorporación exitosa y duradera.",
-  },
-  {
     icon: Clipboard,
     title: "Evaluamos candidatos",
     description:
       "Realizamos entrevistas y pruebas para seleccionar a los perfiles más adecuados.",
+  },
+    {
+    icon: CheckCircle,
+    title: "Acompañamos la integración",
+    description:
+      "Brindamos seguimiento post-selección para asegurar una incorporación exitosa y duradera.",
   },
   {
     icon: Star,

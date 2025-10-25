@@ -11,14 +11,35 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-secondary text-white py-12">
+    <footer
+      className="bg-primary text-white py-12"
+      onMouseEnter={() => document.documentElement.classList.add("cursor-white-footer")}
+      onMouseLeave={() => document.documentElement.classList.remove("cursor-white-footer")}
+    >
       <div className="container mx-auto px-6">
         {/* Grid principal */}
         <div className="grid gap-10 md:grid-cols-3 mb-10">
           {/* Brand */}
+          {/* Brand */}
           <div className="flex flex-col items-start text-left md:items-start md:text-left">
-            <img src={logo} alt="Trima RH Logo" className="w-20 mb-4" />
-            <h3 className="text-2xl font-bold mb-2">Trima RH</h3>
+            <img
+              src={logo}
+              alt="Trima RH Logo"
+              className="w-20 mb-4 cursor-pointer transition-transform transition-colors duration-300 hover:scale-105 hover:text-white"
+              onClick={() => {
+                const target = document.querySelector('#inicio');
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+              }}
+            />
+            <h3
+              className="text-2xl font-bold mb-2 cursor-pointer transition-transform transition-colors duration-300 hover:scale-105 hover:text-white"
+              onClick={() => {
+                const target = document.querySelector('#inicio');
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Trima RH
+            </h3>
             <p className="text-white/80 max-w-xs">
               Conectamos personas y organizaciones con propósito.
             </p>
@@ -31,6 +52,7 @@ const Footer = () => {
               {[
                 { id: "inicio", label: "Inicio" },
                 { id: "servicios", label: "Servicios" },
+                { id: "clientes", label: "Clientes" },
                 { id: "contacto", label: "Contacto" },
               ].map((link) => (
                 <li key={link.id}>
@@ -78,8 +100,19 @@ const Footer = () => {
         {/* Copyright y créditos */}
         <div className="border-t border-white/20 pt-6 text-sm text-white/60 flex flex-col md:flex-row items-center justify-center md:justify-between gap-y-4">
           <p className="text-center md:text-left">
-            © {new Date().getFullYear()} Trima RH – Todos los derechos reservados.
+            © {new Date().getFullYear()}{' '}
+            <span
+              className="hover:text-white transition-colors duration-300"
+              onClick={() => {
+                const target = document.querySelector('#inicio');
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Trima RH
+            </span>{' '}
+            – Todos los derechos reservados.
           </p>
+
 
           <p className="flex items-center gap-x-2 justify-center md:justify-end md:mr-20 text-center">
             <span>Desarrollado por</span>
